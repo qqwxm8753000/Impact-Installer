@@ -1,10 +1,7 @@
 name: Build and Publish
 
-
 on:
-  push:
-    branches:
-      - main  # 修改为您主要的分支名称
+  workflow_dispatch:
 
 jobs:
   build:
@@ -27,29 +24,3 @@ jobs:
       with:
         name: Installer
         path: build/libs/Installer-1.0-all.jar  # 修改为您构建生成的 Jar 文件路径
-
-我的意思是有个按钮，点击他就启动
-
-jobs:
-  build:
-    runs-on: ubuntu-latest  # 使用最新版本的 Ubuntu
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '8'  # 修改为您项目所需的 Java 版本
-
-    - name: Build with Gradle
-      run: ./gradlew build
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: Installer
-        path: build/libs/Installer-1.0-all.jar  # 修改为您构建生成的 Jar 文件路径
-
-我的意思是有个按钮，点击他就启动
