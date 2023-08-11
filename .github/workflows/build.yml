@@ -5,22 +5,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用最新版本的 Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '8'  # 修改为您项目所需的 Java 版本
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'  # 选择适合您的 Java 发行版
 
-    - name: Build with Gradle
-      run: ./gradlew build
+      - name: Build with Gradle
+        run: ./gradlew build
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: Installer
-        path: build/libs/Installer-1.0-all.jar  # 修改为您构建生成的 Jar 文件路径
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Installer
+          path: build/libs/Installer-1.0-all.jar  # 修改为您构建生成的 Jar 文件路径
